@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b32d6ba5-34df-4f8d-9377-450d2a24d705" name="Changes" comment="Added git-secret to hide API key">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="b32d6ba5-34df-4f8d-9377-450d2a24d705" name="Changes" comment="Switched to masonry layout using jfoenix and implemented copy url to clipboard when image is clicked">
+      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lordsoftech/PrimaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lordsoftech/PrimaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/lordsoftech/primary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/lordsoftech/primary.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +24,18 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -51,10 +62,11 @@
     "settings.editor.selected.configurable": "vcs.Git"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.com.lordsoftech.App">
+    <configuration name="com.lordsoftech.App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lordsoftech.App" />
       <module name="JGifSearch" />
+      <option name="VM_PARAMETERS" value="-Dprism.order=es2,es1,sw,j2d -Dsun.java2d.opengl=true -Dprism.vsync=false -Dprism.forceGPU=true" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.lordsoftech.*" />
@@ -65,9 +77,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="rest-api | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.com.lordsoftech.App" />
+      <item itemvalue="HTTP Request.rest-api | #1" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
+        <item itemvalue="Application.com.lordsoftech.App" />
+        <item itemvalue="HTTP Request.rest-api | #1" />
       </list>
     </recent_temporary>
   </component>
@@ -82,7 +102,7 @@
       <workItem from="1656417461923" duration="6127000" />
       <workItem from="1656429384513" duration="335000" />
       <workItem from="1656430567984" duration="3664000" />
-      <workItem from="1656663181071" duration="4924000" />
+      <workItem from="1656663181071" duration="14796000" />
     </task>
     <task id="LOCAL-00001" summary="First commit and a WIP of the java Tenor gif searcher">
       <created>1656429423415</created>
@@ -98,7 +118,28 @@
       <option name="project" value="LOCAL" />
       <updated>1656668405707</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Removed API key from publicly visible place">
+      <created>1656668437487</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1656668437487</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added jfoenix to the dependency for it's masonry layout">
+      <created>1656668464619</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1656668464619</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added jfoenix and javax.annotation">
+      <created>1656691644846</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1656691644846</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,7 +159,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit and a WIP of the java Tenor gif searcher" />
     <MESSAGE value="Added git-secret to hide API key" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added git-secret to hide API key" />
+    <MESSAGE value="Removed API key from publicly visible place" />
+    <MESSAGE value="Added jfoenix to the dependency for it's masonry layout" />
+    <MESSAGE value="Added jfoenix and javax.annotation" />
+    <MESSAGE value="Switched to masonry layout using jfoenix and implemented copy url to clipboard when image is clicked" />
+    <option name="LAST_COMMIT_MESSAGE" value="Switched to masonry layout using jfoenix and implemented copy url to clipboard when image is clicked" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
