@@ -20,17 +20,7 @@ import org.json.JSONObject;
 
 public class PrimaryController {
 
-    private static final String API_KEY = "AIzaSyAa91J9YuHAFgymjhZg3tC0HR-CoOU-UHs";
-    private static final String CLIENT_KEY = "javagifsearch";
-    private static final String LogTag = "TenorTest";
 
-
-
-    @FXML
-    private void searchRemote(StringProperty property, String oldValue, String searchTerm) {
-        //API KEY: AIzaSyAa91J9YuHAFgymjhZg3tC0HR-CoOU-UHs
-        //String searchTerm = searchField
-    }
     @FXML private TextField searchField;
    @FXML private ImageView img0;
    @FXML private ImageView img1;
@@ -52,6 +42,8 @@ public class PrimaryController {
 
     public void fetchGifs(String searchString) {
         if(searchString.length()>0) {
+            searchString = searchString.replace(' ' ,'+');
+            System.out.println(searchString);
             try {
                 JSONObject searchResult = getSearchResults(searchString, 9);
                 putImgInView(searchResult, 0, img0);
@@ -83,7 +75,7 @@ public class PrimaryController {
         // make search request - using default locale of EN_US
 
         final String url = String.format("https://tenor.googleapis.com/v2/search?q=%1$s&key=%2$s&client_key=%3$s&limit=%4$s",
-                searchTerm, API_KEY, CLIENT_KEY, limit);
+                searchTerm, ApiKey.getApiKey(), ApiKey.getClientKey(), limit);
         try {
             return get(url);
         } catch (IOException | JSONException ignored) {

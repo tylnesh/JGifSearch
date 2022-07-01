@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b32d6ba5-34df-4f8d-9377-450d2a24d705" name="Changes" comment="First commit and a WIP of the java Tenor gif searcher">
+    <list default="true" id="b32d6ba5-34df-4f8d-9377-450d2a24d705" name="Changes" comment="Added git-secret to hide API key">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -48,7 +48,7 @@
     "project.structure.last.edited": "Global Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "vcs.Git"
   }
 }]]></component>
   <component name="RunManager">
@@ -82,7 +82,7 @@
       <workItem from="1656417461923" duration="6127000" />
       <workItem from="1656429384513" duration="335000" />
       <workItem from="1656430567984" duration="3664000" />
-      <workItem from="1656663181071" duration="4578000" />
+      <workItem from="1656663181071" duration="4924000" />
     </task>
     <task id="LOCAL-00001" summary="First commit and a WIP of the java Tenor gif searcher">
       <created>1656429423415</created>
@@ -91,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656429423415</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added git-secret to hide API key">
+      <created>1656668405707</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1656668405707</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,7 +117,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit and a WIP of the java Tenor gif searcher" />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit and a WIP of the java Tenor gif searcher" />
+    <MESSAGE value="Added git-secret to hide API key" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added git-secret to hide API key" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
