@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="661.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lordsoftech.PrimaryController">
-    <TextField id="searchField" fx:id="searchField" layoutX="22.0" layoutY="14.0" prefHeight="26.0" prefWidth="558.0" promptText="Search Tenor" />
-   <FlowPane layoutX="22.0" layoutY="40.0" prefHeight="485.0" prefWidth="610.0">
-      <children>
-          <ImageView id="img0" fx:id="img0" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-          <ImageView id="img1" fx:id="img1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-          <ImageView id="img2" fx:id="img2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-         <ImageView id="img3" fx:id="img3" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-         <ImageView id="img4" fx:id="img4" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-         <ImageView id="img5" fx:id="img5" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-         <ImageView id="img6" fx:id="img6" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-         <ImageView id="img7" fx:id="img7" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-         <ImageView id="img8" fx:id="img8" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-      </children>
-   </FlowPane>
-</AnchorPane>
+<BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lordsoftech.PrimaryController">
+   <center>
+      <StackPane>
+          <ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER">
+              <JFXMasonryPane fx:id="masonryPane" HSpacing="10" VSpacing="10">
+                  <padding>
+                  <Insets bottom="16" left="16" right="16" top="16" />
+               </padding>
+              </JFXMasonryPane>
+          </ScrollPane>
+      </StackPane>
+   </center>
+   <top>
+      <TextField promptText="Search Tenor" id="searchField" fx:id="searchField" BorderPane.alignment="CENTER" />
+   </top>
+</BorderPane>

@@ -1,74 +1,106 @@
 package com.lordsoftech;
 
-import java.io.*;
-import java.net.ConnectException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-
+import com.jfoenix.controls.JFXScrollPane;
+import com.jfoenix.effects.JFXDepthManager;
 import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.*;
+import java.net.ConnectException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+
 public class PrimaryController {
 
-
+    private final Integer LIMIT = 20;
     @FXML private TextField searchField;
-   @FXML private ImageView img0;
-   @FXML private ImageView img1;
-   @FXML private ImageView img2;
-    @FXML private ImageView img3;
-    @FXML private ImageView img4;
-    @FXML private ImageView img5;
-    @FXML private ImageView img6;
-    @FXML private ImageView img7;
-    @FXML private ImageView img8;
+    @FXML private com.jfoenix.controls.JFXMasonryPane masonryPane;
+    @FXML
+    private ScrollPane scrollPane;
+
    PauseTransition fetchDelay = new PauseTransition(Duration.millis(200));
     public void initialize() {
+
         searchField.textProperty().addListener((obs, oldText, newText) -> {
 
-            fetchDelay.setOnFinished(event -> fetchGifs(newText));
+            fetchDelay.setOnFinished(event -> fetchAndDisplayGifs(newText));
             fetchDelay.playFromStart();
         });
     }
 
-    public void fetchGifs(String searchString) {
+    public void fetchAndDisplayGifs(String searchString) {
+        masonryPane.getChildren().clear();
         if(searchString.length()>0) {
             searchString = searchString.replace(' ' ,'+');
             System.out.println(searchString);
             try {
-                JSONObject searchResult = getSearchResults(searchString, 9);
-                putImgInView(searchResult, 0, img0);
-                putImgInView(searchResult, 1, img1);
-                putImgInView(searchResult, 2, img2);
-                putImgInView(searchResult, 3, img3);
-                putImgInView(searchResult, 4, img4);
-                putImgInView(searchResult, 5, img5);
-                putImgInView(searchResult, 6, img6);
-                putImgInView(searchResult, 7, img7);
-                putImgInView(searchResult, 8, img8);
-
+                ArrayList<ImageView> imageViewList = new ArrayList<>();
+                JSONObject searchResult = getSearchResults(searchString,20);
+                generateMasonry(searchResult);
             } catch (NullPointerException ex) {
                 ex.printStackTrace();
             }
         }
+
         //img0.setImage();
     }
 
-    public void putImgInView(JSONObject searchResults, int index, ImageView img) {
-        JSONArray resultArray = searchResults.getJSONArray("results");
-        JSONObject gif = resultArray.getJSONObject(index).getJSONObject("media_formats").getJSONObject("tinygif");
-        String url = gif.getString("url");
-        img.setImage(new Image(url, true));
+    public void generateMasonry(JSONObject sourceJsonObject) {
+        ArrayList<Node> masonryTiles = new ArrayList<>();
+        JSONArray resultArray = sourceJsonObject.getJSONArray("results");
+
+        for (int i = 0; i < LIMIT; i++) {
+            //get tinygif object from the Json response
+            JSONObject gifObject = resultArray.getJSONObject(i).getJSONObject("media_formats").getJSONObject("tinygif");
+
+            //create c stackpane container object
+            StackPane tile = new StackPane();
+            int width = gifObject.getJSONArray("dims").getInt(0);
+            tile.setPrefWidth(width + 20.0);
+            int height = gifObject.getJSONArray("dims").getInt(1);
+            tile.setPrefHeight(height + 20.0);
+            JFXDepthManager.setDepth(tile, 1);
+            masonryTiles.add(tile);
+
+            // create image content
+            ImageView img = new ImageView();
+            img.setFitWidth(width);
+            img.setFitHeight(height);
+            String url = gifObject.getString("url");
+            Image sourceImg = new Image(url, true);
+            img.setImage(sourceImg);
+            img.setOnMouseClicked( event -> {
+                Clipboard clipboard = Clipboard.getSystemClipboard();
+                ClipboardContent content = new ClipboardContent();
+//                content.putImage(sourceImg);
+                content.putUrl(url);
+                clipboard.setContent(content);
+            });
+
+            tile.getChildren().add(img);
+        }
+
+        masonryPane.getChildren().addAll(masonryTiles);
+        Platform.runLater(() -> scrollPane.requestLayout());
+        JFXScrollPane.smoothScrolling(scrollPane);
+
     }
+
 
     public static JSONObject getSearchResults(String searchTerm, int limit) {
 
