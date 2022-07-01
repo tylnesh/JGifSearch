@@ -30,16 +30,17 @@ public class PrimaryController {
     private void searchRemote(StringProperty property, String oldValue, String searchTerm) {
         //API KEY: AIzaSyAa91J9YuHAFgymjhZg3tC0HR-CoOU-UHs
         //String searchTerm = searchField
-
-
-        System.out.println(searchTerm);
     }
-
-    @FXML
-    private TextField searchField;
-   @FXML
-   private ImageView img0;
-
+    @FXML private TextField searchField;
+   @FXML private ImageView img0;
+   @FXML private ImageView img1;
+   @FXML private ImageView img2;
+    @FXML private ImageView img3;
+    @FXML private ImageView img4;
+    @FXML private ImageView img5;
+    @FXML private ImageView img6;
+    @FXML private ImageView img7;
+    @FXML private ImageView img8;
    PauseTransition fetchDelay = new PauseTransition(Duration.millis(200));
     public void initialize() {
         searchField.textProperty().addListener((obs, oldText, newText) -> {
@@ -52,18 +53,29 @@ public class PrimaryController {
     public void fetchGifs(String searchString) {
         if(searchString.length()>0) {
             try {
-                JSONObject searchResult = getSearchResults(searchString, 8);
-                JSONArray resultArray = searchResult.getJSONArray("results");
-                JSONObject gif = resultArray.getJSONObject(0).getJSONObject("media_formats").getJSONObject("gif");
-                String url = gif.getString("url");
-                Image img = new Image(url, true);
-                System.out.println();
-                img0.setImage(img);
+                JSONObject searchResult = getSearchResults(searchString, 9);
+                putImgInView(searchResult, 0, img0);
+                putImgInView(searchResult, 1, img1);
+                putImgInView(searchResult, 2, img2);
+                putImgInView(searchResult, 3, img3);
+                putImgInView(searchResult, 4, img4);
+                putImgInView(searchResult, 5, img5);
+                putImgInView(searchResult, 6, img6);
+                putImgInView(searchResult, 7, img7);
+                putImgInView(searchResult, 8, img8);
+
             } catch (NullPointerException ex) {
                 ex.printStackTrace();
             }
         }
         //img0.setImage();
+    }
+
+    public void putImgInView(JSONObject searchResults, int index, ImageView img) {
+        JSONArray resultArray = searchResults.getJSONArray("results");
+        JSONObject gif = resultArray.getJSONObject(index).getJSONObject("media_formats").getJSONObject("tinygif");
+        String url = gif.getString("url");
+        img.setImage(new Image(url, true));
     }
 
     public static JSONObject getSearchResults(String searchTerm, int limit) {
