@@ -3,6 +3,7 @@ package com.lordsoftech;
 import com.jfoenix.controls.JFXScrollPane;
 import com.jfoenix.effects.JFXDepthManager;
 import javafx.animation.PauseTransition;
+import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -35,13 +36,14 @@ public class PrimaryController {
 
    PauseTransition fetchDelay = new PauseTransition(Duration.millis(200));
     public void initialize() {
-
+        fetchAndDisplayGifs(searchField.getText());
         searchField.textProperty().addListener((obs, oldText, newText) -> {
-
             fetchDelay.setOnFinished(event -> fetchAndDisplayGifs(newText));
             fetchDelay.playFromStart();
         });
     }
+
+
 
     public void fetchAndDisplayGifs(String searchString) {
         masonryPane.getChildren().clear();
@@ -49,14 +51,20 @@ public class PrimaryController {
             searchString = searchString.replace(' ' ,'+');
             System.out.println(searchString);
             try {
-                ArrayList<ImageView> imageViewList = new ArrayList<>();
-                JSONObject searchResult = getSearchResults(searchString,20);
+                JSONObject searchResult = getSearchResults(searchString,LIMIT);
                 generateMasonry(searchResult);
             } catch (NullPointerException ex) {
                 ex.printStackTrace();
             }
         }
-
+        else {
+            try {
+                JSONObject featuredResults = getFeaturedResults(LIMIT);
+                generateMasonry(featuredResults);
+            } catch (NullPointerException ex) {
+                ex.printStackTrace();
+            }
+        }
         //img0.setImage();
     }
 
@@ -85,13 +93,12 @@ public class PrimaryController {
             Image sourceImg = new Image(url, true);
             img.setImage(sourceImg);
             img.setOnMouseClicked( event -> {
+                animateClick(img);
                 Clipboard clipboard = Clipboard.getSystemClipboard();
                 ClipboardContent content = new ClipboardContent();
-//                content.putImage(sourceImg);
-                content.putUrl(url);
+                content.putString(url);
                 clipboard.setContent(content);
             });
-
             tile.getChildren().add(img);
         }
 
@@ -102,12 +109,33 @@ public class PrimaryController {
     }
 
 
+    public static void animateClick(Node node){
+        ScaleTransition scaleTransition = new ScaleTransition();
+        scaleTransition.setNode(node);
+        scaleTransition.setByX(1.1);
+        scaleTransition.setByY(1.1);
+        scaleTransition.setCycleCount(2);
+        scaleTransition.setAutoReverse(true);
+        scaleTransition.setDuration(Duration.millis(50));
+        scaleTransition.play();
+    }
+
+
     public static JSONObject getSearchResults(String searchTerm, int limit) {
 
         // make search request - using default locale of EN_US
-
         final String url = String.format("https://tenor.googleapis.com/v2/search?q=%1$s&key=%2$s&client_key=%3$s&limit=%4$s",
                 searchTerm, ApiKey.getApiKey(), ApiKey.getClientKey(), limit);
+        try {
+            return get(url);
+        } catch (IOException | JSONException ignored) {
+        }
+        return null;
+    }
+
+    public static JSONObject getFeaturedResults(int limit) {
+        final String url = String.format("https://tenor.googleapis.com/v2/featured?key=%1$s&client_key=%2$s&limit=%3$s",
+                ApiKey.getApiKey(), ApiKey.getClientKey(),limit);
         try {
             return get(url);
         } catch (IOException | JSONException ignored) {
