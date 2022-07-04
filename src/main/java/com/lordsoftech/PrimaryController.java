@@ -31,10 +31,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class PrimaryController {
 
     private final Integer LIMIT = 20;
+    private String nextPos = "";
     @FXML private TextField searchField;
     @FXML private com.jfoenix.controls.JFXMasonryPane masonryPane;
     @FXML
@@ -66,7 +68,25 @@ public class PrimaryController {
     }
 
     private void fetchMoreGifs(String searchString) {
-        //TODO implement loading more gifs from pos.
+        if(searchString.length()>0) {
+            searchString = searchString.replace(' ' ,'+');
+            System.out.println(searchString);
+            try {
+                JSONObject searchResult = getSearchResults(searchString,LIMIT,nextPos);
+                nextPos = searchResult.getString("next");
+                generateMasonry(searchResult);
+            } catch (NullPointerException ex) {
+                ex.printStackTrace();
+            }
+        }
+        else {
+            try {
+                JSONObject featuredResults = getFeaturedResults(LIMIT,nextPos);
+                generateMasonry(featuredResults);
+            } catch (NullPointerException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 
 
@@ -77,6 +97,7 @@ public class PrimaryController {
             System.out.println(searchString);
             try {
                 JSONObject searchResult = getSearchResults(searchString,LIMIT);
+                nextPos = searchResult.getString("next");
                 generateMasonry(searchResult);
             } catch (NullPointerException ex) {
                 ex.printStackTrace();
@@ -90,8 +111,9 @@ public class PrimaryController {
                 ex.printStackTrace();
             }
         }
-        //img0.setImage();
     }
+
+
 
     public void generateMasonry(JSONObject sourceJsonObject) {
         ArrayList<Node> masonryTiles = new ArrayList<>();
@@ -147,7 +169,6 @@ public class PrimaryController {
 
 
     public static JSONObject getSearchResults(String searchTerm, int limit) {
-
         // make search request - using default locale of EN_US
         final String url = String.format("https://tenor.googleapis.com/v2/search?q=%1$s&key=%2$s&client_key=%3$s&limit=%4$s",
                 searchTerm, ApiKey.getApiKey(), ApiKey.getClientKey(), limit);
@@ -158,9 +179,30 @@ public class PrimaryController {
         return null;
     }
 
+    public static JSONObject getSearchResults(String searchTerm, int limit, String nextPos) {
+        // make search request - using default locale of EN_US
+        final String url = String.format("https://tenor.googleapis.com/v2/search?q=%1$s&key=%2$s&client_key=%3$s&limit=%4$s&pos=%5$s",
+                searchTerm, ApiKey.getApiKey(), ApiKey.getClientKey(), limit, nextPos);
+        try {
+            return get(url);
+        } catch (IOException | JSONException ignored) {
+        }
+        return null;
+    }
+
     public static JSONObject getFeaturedResults(int limit) {
         final String url = String.format("https://tenor.googleapis.com/v2/featured?key=%1$s&client_key=%2$s&limit=%3$s",
                 ApiKey.getApiKey(), ApiKey.getClientKey(),limit);
+        try {
+            return get(url);
+        } catch (IOException | JSONException ignored) {
+        }
+        return null;
+    }
+
+    public static JSONObject getFeaturedResults(int limit, String nextPos) {
+        final String url = String.format("https://tenor.googleapis.com/v2/featured?key=%1$s&client_key=%2$s&limit=%3$s&pos=%4$s",
+                ApiKey.getApiKey(), ApiKey.getClientKey(),limit, nextPos);
         try {
             return get(url);
         } catch (IOException | JSONException ignored) {

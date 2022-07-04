@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b32d6ba5-34df-4f8d-9377-450d2a24d705" name="Changes" comment="Added click animation and default showing of featured gifs">
+    <list default="true" id="b32d6ba5-34df-4f8d-9377-450d2a24d705" name="Changes" comment="Added new button that shows after scrolling 90% down.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lordsoftech/PrimaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lordsoftech/PrimaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/lordsoftech/primary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/lordsoftech/primary.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +102,7 @@
       <workItem from="1656663181071" duration="15230000" />
       <workItem from="1656694245910" duration="1726000" />
       <workItem from="1656761637204" duration="3020000" />
-      <workItem from="1656940358799" duration="4055000" />
+      <workItem from="1656940358799" duration="6917000" />
     </task>
     <task id="LOCAL-00001" summary="First commit and a WIP of the java Tenor gif searcher">
       <created>1656429423415</created>
@@ -182,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656942223182</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added new button that shows after scrolling 90% down.">
+      <created>1656944664292</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1656944664292</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,7 +217,8 @@
     <MESSAGE value="Added maven.jar.plugin for building the app into a JAR." />
     <MESSAGE value="no comment" />
     <MESSAGE value="Added click animation and default showing of featured gifs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added click animation and default showing of featured gifs" />
+    <MESSAGE value="Added new button that shows after scrolling 90% down." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new button that shows after scrolling 90% down." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
