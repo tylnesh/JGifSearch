@@ -18,6 +18,9 @@
       </StackPane>
    </center>
    <top>
-      <TextField promptText="Search Tenor" id="searchField" fx:id="searchField" BorderPane.alignment="CENTER" />
+      <TextField id="searchField" fx:id="searchField" promptText="Search Tenor" BorderPane.alignment="CENTER" />
    </top>
+   <bottom>
+      <Button fx:id="loadMoreBtn" mnemonicParsing="false" text="More" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>

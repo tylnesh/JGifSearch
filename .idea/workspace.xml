@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b32d6ba5-34df-4f8d-9377-450d2a24d705" name="Changes" comment="nothing to say">
+    <list default="true" id="b32d6ba5-34df-4f8d-9377-450d2a24d705" name="Changes" comment="Added click animation and default showing of featured gifs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lordsoftech/PrimaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lordsoftech/PrimaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/lordsoftech/primary.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/lordsoftech/primary.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +103,7 @@
       <workItem from="1656663181071" duration="15230000" />
       <workItem from="1656694245910" duration="1726000" />
       <workItem from="1656761637204" duration="3020000" />
-      <workItem from="1656940358799" duration="1709000" />
+      <workItem from="1656940358799" duration="4055000" />
     </task>
     <task id="LOCAL-00001" summary="First commit and a WIP of the java Tenor gif searcher">
       <created>1656429423415</created>
@@ -155,7 +154,35 @@
       <option name="project" value="LOCAL" />
       <updated>1656691866883</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Don't need javax.annotation">
+      <created>1656942087905</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1656942087905</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added maven.jar.plugin for building the app into a JAR.">
+      <created>1656942124089</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1656942124090</updated>
+    </task>
+    <task id="LOCAL-00010" summary="no comment">
+      <created>1656942149990</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1656942149990</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added click animation and default showing of featured gifs">
+      <created>1656942223182</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1656942223182</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,7 +207,11 @@
     <MESSAGE value="Added jfoenix and javax.annotation" />
     <MESSAGE value="Switched to masonry layout using jfoenix and implemented copy url to clipboard when image is clicked" />
     <MESSAGE value="nothing to say" />
-    <option name="LAST_COMMIT_MESSAGE" value="nothing to say" />
+    <MESSAGE value="Don't need javax.annotation" />
+    <MESSAGE value="Added maven.jar.plugin for building the app into a JAR." />
+    <MESSAGE value="no comment" />
+    <MESSAGE value="Added click animation and default showing of featured gifs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added click animation and default showing of featured gifs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

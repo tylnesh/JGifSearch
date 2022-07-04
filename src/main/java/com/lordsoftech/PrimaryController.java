@@ -5,14 +5,20 @@ import com.jfoenix.effects.JFXDepthManager;
 import javafx.animation.PauseTransition;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import org.json.JSONArray;
@@ -33,16 +39,35 @@ public class PrimaryController {
     @FXML private com.jfoenix.controls.JFXMasonryPane masonryPane;
     @FXML
     private ScrollPane scrollPane;
+    @FXML private Button loadMoreBtn;
 
    PauseTransition fetchDelay = new PauseTransition(Duration.millis(200));
     public void initialize() {
+
+        loadMoreBtn.setVisible(false);
         fetchAndDisplayGifs(searchField.getText());
+
+        // Add listeners
         searchField.textProperty().addListener((obs, oldText, newText) -> {
             fetchDelay.setOnFinished(event -> fetchAndDisplayGifs(newText));
             fetchDelay.playFromStart();
         });
+
+        scrollPane.vvalueProperty().addListener((observableValue, number, t1) -> {
+            if (t1.doubleValue()>=.90) {
+                loadMoreBtn.setVisible(true);
+            }
+            else {
+                loadMoreBtn.setVisible(false);
+            }
+        });
+
+        loadMoreBtn.setOnAction(event -> fetchMoreGifs(searchField.getText()));
     }
 
+    private void fetchMoreGifs(String searchString) {
+        //TODO implement loading more gifs from pos.
+    }
 
 
     public void fetchAndDisplayGifs(String searchString) {
