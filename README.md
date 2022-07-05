@@ -14,6 +14,14 @@ Simple Tenor gif search utility written in Java, with gui in JavaFX
  - Packaging it up in a runnable .jar or other format
  - Implementing the rest of the [Tenor Gif API](https://developers.google.com/tenor/guides/quickstart)
  
+## Planned features:
+ - Settings tab to set up all the advanced search parameters such as localizations and content filtering
+ - Settings will be kept after restarting applications
+ - Adding gifs to Favourites
+ - Downloading gifs in various formats
+ - History
+ - Categories browsing
+ 
 ## How to run:
  - Currently it's easiest to run straight from IntelliJ IDEA
  - You need to implement your own ApiKey Class with properties API_KEY and CLIENT_KEY. You can get your own API_KEY [here](https://developers.google.com/tenor/guides/quickstart). The client_key is up to you and serves to distinguish between multiple apps by the same dev, that use the same API key.
