@@ -5,10 +5,6 @@ import com.jfoenix.effects.JFXDepthManager;
 import javafx.animation.PauseTransition;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -18,7 +14,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import org.json.JSONArray;
@@ -31,9 +26,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Optional;
 
-public class PrimaryController {
+public class MainWindow {
 
     private final Integer LIMIT = 20;
     private String nextPos = "";
@@ -151,7 +145,7 @@ public class PrimaryController {
 
         masonryPane.getChildren().addAll(masonryTiles);
         Platform.runLater(() -> scrollPane.requestLayout());
-        JFXScrollPane.smoothScrolling(scrollPane);
+        //JFXScrollPane.smoothScrolling(scrollPane);
 
     }
 

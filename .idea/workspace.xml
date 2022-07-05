@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b32d6ba5-34df-4f8d-9377-450d2a24d705" name="Changes" comment="Working loading more search results and featured">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/lordsoftech/MainWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lordsoftech/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lordsoftech/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lordsoftech/PrimaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lordsoftech/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/lordsoftech/primary.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,8 +64,8 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.com.lordsoftech.App">
-    <configuration name="com.lordsoftech.App" type="Application" factoryName="Application" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lordsoftech.App" />
       <module name="JGifSearch" />
       <option name="VM_PARAMETERS" value="-Dprism.order=es2,es1,sw,j2d -Dsun.java2d.opengl=true -Dprism.vsync=false -Dprism.forceGPU=true" />
@@ -78,7 +83,7 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.com.lordsoftech.App" />
+      <item itemvalue="Application.App" />
       <item itemvalue="HTTP Request.rest-api | #1" />
     </list>
     <recent_temporary>
@@ -101,7 +106,8 @@
       <workItem from="1656663181071" duration="15230000" />
       <workItem from="1656694245910" duration="1726000" />
       <workItem from="1656761637204" duration="3020000" />
-      <workItem from="1656940358799" duration="7731000" />
+      <workItem from="1656940358799" duration="8288000" />
+      <workItem from="1657033245388" duration="6376000" />
     </task>
     <task id="LOCAL-00001" summary="First commit and a WIP of the java Tenor gif searcher">
       <created>1656429423415</created>
@@ -194,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656961239949</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Working loading more search results and featured">
+      <created>1657008170184</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1657008170184</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
