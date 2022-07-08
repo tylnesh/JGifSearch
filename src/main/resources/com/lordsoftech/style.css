@@ -1,0 +1,27 @@
+/* set default fill of svg path */
+.icon-button .button-icon {
+    -fx-fill: #888888;
+}
+
+/* set default fill of svg path */
+.icon-button:focused {
+    -fx-background-color: lightblue;
+    -fx-background-radius: 0;
+}
+
+/* remove default button style & set size */
+.icon-button {
+    -fx-background-color: transparent, transparent, transparent, transparent, transparent;
+    -fx-pref-height: 30;
+    -fx-pref-width: 30;
+    -fx-min-height: 30;
+    -fx-min-width: 30;
+    -fx-max-height: 30;
+    -fx-max-width: 30;
+}
+
+/* modify svg path fill for hovered/pressed button */
+.icon-button:pressed .button-icon,
+.icon-button:hover .button-icon {
+    -fx-fill: #444444;
+}

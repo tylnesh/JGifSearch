@@ -18,6 +18,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("MainWindow"), 800, 600);
+        scene.getStylesheets().add(App.class.getResource("style.css").toString());
         stage.setTitle("JGifSearch");
         stage.setScene(scene);
         stage.show();
