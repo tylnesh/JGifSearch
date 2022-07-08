@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b32d6ba5-34df-4f8d-9377-450d2a24d705" name="Changes" comment="Renaming primary and primaryController to MainWindow.">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/lordsoftech/style.css" afterDir="false" />
+    <list default="true" id="b32d6ba5-34df-4f8d-9377-450d2a24d705" name="Changes" comment="Added new method for creating buttons from svg path and some basic styling from SO">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lordsoftech/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lordsoftech/MainWindow.java" afterDir="false" />
     </list>
@@ -108,7 +107,7 @@
       <workItem from="1656940358799" duration="8288000" />
       <workItem from="1657033245388" duration="6376000" />
       <workItem from="1657051187811" duration="678000" />
-      <workItem from="1657117809655" duration="16528000" />
+      <workItem from="1657117809655" duration="17821000" />
     </task>
     <task id="LOCAL-00001" summary="First commit and a WIP of the java Tenor gif searcher">
       <created>1656429423415</created>
@@ -215,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657054006542</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added new method for creating buttons from svg path and some basic styling from SO">
+      <created>1657307498607</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1657307498607</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,7 +253,8 @@
     <MESSAGE value="Added new button that shows after scrolling 90% down." />
     <MESSAGE value="Working loading more search results and featured" />
     <MESSAGE value="Renaming primary and primaryController to MainWindow." />
-    <option name="LAST_COMMIT_MESSAGE" value="Renaming primary and primaryController to MainWindow." />
+    <MESSAGE value="Added new method for creating buttons from svg path and some basic styling from SO" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new method for creating buttons from svg path and some basic styling from SO" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

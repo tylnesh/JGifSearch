@@ -180,11 +180,15 @@ public class MainWindow {
                     "\tc1.078,4.568,3.568,8.723,7.199,12.013l18.115,16.439l18.426-16.438c3.631-3.291,6.121-7.445,7.199-12.014\n" +
                     "\tC52.216,18.553,51.97,16.611,51.911,16.242z");
 
+            urlButton.setOnMouseClicked( e -> {
 
+                Clipboard clipboard = Clipboard.getSystemClipboard();
+                ClipboardContent content = new ClipboardContent();
+                content.putString(url);
+                clipboard.setContent(content);
+
+            });
             hbox.getChildren().addAll(urlButton,downloadButton, favButton);
-
-
-
             frostView.getChildren().add(hbox);
 
             //frostView.setVisible(false);
@@ -236,13 +240,13 @@ public class MainWindow {
         img.setFitWidth(width);
         img.setFitHeight(height);
         img.setImage(sourceImg);
-        img.setOnMouseClicked( event -> {
-            animateClick(img);
-            Clipboard clipboard = Clipboard.getSystemClipboard();
-            ClipboardContent content = new ClipboardContent();
-            content.putString(url);
-            clipboard.setContent(content);
-        });
+//        img.setOnMouseClicked( event -> {
+//            animateClick(img);
+//            Clipboard clipboard = Clipboard.getSystemClipboard();
+//            ClipboardContent content = new ClipboardContent();
+//            content.putString(url);
+//            clipboard.setContent(content);
+//        });
         return img;
     }
 
