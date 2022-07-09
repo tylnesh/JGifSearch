@@ -1,6 +1,5 @@
 package com.lordsoftech;
 
-import com.jfoenix.controls.JFXScrollPane;
 import com.jfoenix.effects.JFXDepthManager;
 import javafx.animation.*;
 import javafx.application.Platform;
@@ -8,8 +7,8 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -22,11 +21,11 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.SVGPath;
+import javafx.stage.FileChooser;
 import javafx.util.Duration;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,10 +35,11 @@ import java.io.*;
 import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.FileChannel;
+import java.nio.channels.ReadableByteChannel;
 import java.nio.charset.StandardCharsets;
-import java.security.Key;
 import java.util.ArrayList;
-import java.util.Stack;
 
 public class MainWindow {
 
@@ -147,7 +147,7 @@ public class MainWindow {
             double width = gifObject.getJSONArray("dims").getDouble(0);
             double height = gifObject.getJSONArray("dims").getDouble(1);
 
-            DoubleProperty y = new SimpleDoubleProperty(height + 20);
+            DoubleProperty y = new SimpleDoubleProperty(height);
 
             //create stack pane container object
             StackPane tile = createTile(width, height);
@@ -161,6 +161,8 @@ public class MainWindow {
 
             HBox hbox = new HBox();
             hbox.setAlignment(Pos.BOTTOM_CENTER);
+            hbox.setSpacing(20);
+            hbox.setPadding(new Insets(20, 10, 20, 10));
 
 
             Button urlButton = createButtonFromPath("M51.173,3.801c-5.068-5.068-13.315-5.066-18.384,0l-9.192,9.192c-0.781,0.781-0.781,2.047,0,2.828\n" +
@@ -181,13 +183,32 @@ public class MainWindow {
                     "\tC52.216,18.553,51.97,16.611,51.911,16.242z");
 
             urlButton.setOnMouseClicked( e -> {
-
                 Clipboard clipboard = Clipboard.getSystemClipboard();
                 ClipboardContent content = new ClipboardContent();
                 content.putString(url);
                 clipboard.setContent(content);
 
             });
+
+            int finalI = i;
+            downloadButton.setOnMouseClicked(e -> {
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Gif Files","*.gif"));
+                File initialDirectory = new File(System.getProperty("user.home"));
+                fileChooser.setInitialDirectory(initialDirectory);
+                fileChooser.setInitialFileName(resultArray.getJSONObject(finalI).getString("content_description"));
+                File saveFile = fileChooser.showSaveDialog(((Node) e.getSource()).getScene().getWindow());
+                try {
+                    ReadableByteChannel readableByteChannel = Channels.newChannel(new URL(url).openStream());
+                    FileOutputStream fileOutput = new FileOutputStream(saveFile);
+                    FileChannel writeChannel = fileOutput.getChannel();
+                    writeChannel.transferFrom(readableByteChannel,0,Long.MAX_VALUE);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+
+
             hbox.getChildren().addAll(urlButton,downloadButton, favButton);
             frostView.getChildren().add(hbox);
 
@@ -196,6 +217,7 @@ public class MainWindow {
             tile.getChildren().add(frostView);
 
             double upperSlideLimit = height > 150 ? height*0.75 : height*.5;
+            //double upperSlideLimit = height - 100;
             addSlideHandlers(y, upperSlideLimit, height, frostView, tile);
             masonryTiles.add(tile);
 
@@ -240,13 +262,6 @@ public class MainWindow {
         img.setFitWidth(width);
         img.setFitHeight(height);
         img.setImage(sourceImg);
-//        img.setOnMouseClicked( event -> {
-//            animateClick(img);
-//            Clipboard clipboard = Clipboard.getSystemClipboard();
-//            ClipboardContent content = new ClipboardContent();
-//            content.putString(url);
-//            clipboard.setContent(content);
-//        });
         return img;
     }
 
@@ -301,10 +316,10 @@ public class MainWindow {
 
         });
 
-        container.setOnMouseExited( e-> {
+        container.setOnMouseExited( e0-> {
             slideIn.stop();
             slideOut.play();
-            slideOut.setOnFinished(e2->{
+            slideOut.setOnFinished(e1->{
                 frostedContent.setVisible(false);
             });
         });
